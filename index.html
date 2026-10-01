@@ -5,46 +5,124 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Тренировки по футболу | 7-10 лет</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .fade { animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0.3; } to { opacity: 1; } }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-gray-50 text-gray-800 font-sans pb-10">
     
     <header class="bg-green-600 text-white p-6 text-center shadow-md">
-        <h1 class="text-3xl font-bold">Футбольная база (7-10 лет)</h1>
-        <p class="mt-2 text-green-100">Учимся играть правильно: от первых шагов до розыгрышей</p>
+        <h1 class="text-3xl font-bold mb-2">Футбольная база (7-10 лет)</h1>
+        <p class="text-green-100 text-lg">Учимся играть правильно: техника, тактика и психология</p>
     </header>
 
-    <main class="max-w-4xl mx-auto p-4 mt-6 space-y-6">
+    <main class="max-w-5xl mx-auto p-4 mt-6 space-y-8">
         
-        <!-- Блок 1: Введение -->
-        <section class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-            <h2 class="text-2xl font-bold text-green-700 mb-4">Введение в футбол</h2>
-            <ul class="list-disc pl-5 space-y-2">
-                <li><strong>Чувство мяча:</strong> Перекаты подошвой, жонглирование (чеканка) после отскока.</li>
-                <li><strong>Ведение (дриблинг):</strong> Ведение мяча внешней и внутренней частью подъема на небольшой скорости.</li>
-                <li><strong>Остановка мяча:</strong> Прием катящегося мяча подошвой и внутренней стороной стопы ("щечкой").</li>
-            </ul>
+        <!-- Слайдер с картинками -->
+        <section class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 text-center">
+            <h2 class="text-2xl font-bold text-green-700 mb-4">Наши тренировки</h2>
+            
+            <div class="relative w-full max-w-3xl mx-auto aspect-video bg-gray-100 rounded-lg overflow-hidden flex items-center justify-center shadow-inner">
+                <!-- Изображение слайдера -->
+                <!-- onerror нужен, чтобы показывать заглушку, пока ты не загрузил реальные фото -->
+                <img id="sliderImage" src="image1.jpg" alt="Футбольная тренировка" 
+                     class="object-cover w-full h-full fade" 
+                     onerror="this.onerror=null; this.src='https://placehold.co/800x450/e2e8f0/475569?text=Загрузите+image1.jpg'">
+                
+                <!-- Кнопки управления -->
+                <button onclick="prevImage()" class="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 text-white w-10 h-10 rounded-full hover:bg-black/70 transition flex items-center justify-center text-xl backdrop-blur-sm">
+                    &#10094;
+                </button>
+                <button onclick="nextImage()" class="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 text-white w-10 h-10 rounded-full hover:bg-black/70 transition flex items-center justify-center text-xl backdrop-blur-sm">
+                    &#10095;
+                </button>
+            </div>
+            <p class="text-sm text-gray-500 mt-3 font-medium">Фото <span id="imageCounter">1</span> из 3</p>
         </section>
 
-        <!-- Блок 2: Удары -->
-        <section class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-            <h2 class="text-2xl font-bold text-green-700 mb-4">Удары и передачи</h2>
-            <ul class="list-disc pl-5 space-y-2">
-                <li><strong>Передача "щечкой":</strong> Опорная нога рядом с мячом, стопа бьющей ноги развернута на 90 градусов.</li>
-                <li><strong>Удар подъемом (на силу):</strong> Удар шнуровкой бутс по центру мяча, носок оттянут вниз.</li>
-                <li><strong>Упражнение:</strong> Игра в пас в парах на расстоянии 3-5 метров.</li>
-            </ul>
-        </section>
+        <!-- Сетка с информационными блоками -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- Базовые навыки -->
+            <section class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h2 class="text-xl font-bold text-green-700 mb-4">⚽ Введение в футбол</h2>
+                <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                    <li><strong>Чувство мяча:</strong> Перекаты подошвой, жонглирование после отскока от земли.</li>
+                    <li><strong>Дриблинг:</strong> Ведение мяча внешней и внутренней частью стопы (шведой и щечкой).</li>
+                    <li><strong>Остановка:</strong> Мягкий прием катящегося мяча подошвой.</li>
+                </ul>
+            </section>
 
-        <!-- Блок 3: Розыгрыши и тактика -->
-        <section class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-            <h2 class="text-2xl font-bold text-green-700 mb-4">Базовые розыгрыши (Тактика)</h2>
-            <ul class="list-disc pl-5 space-y-2">
-                <li><strong>"Стенка":</strong> Быстрый обмен передачами с партнером для обхода защитника.</li>
-                <li><strong>Открывание в свободную зону:</strong> Учим детей не бежать толпой за мячом, а искать свободное пространство.</li>
-                <li><strong>Угловые:</strong> Подача низом на ближнюю штангу или розыгрыш накоротке.</li>
-            </ul>
-        </section>
+            <section class="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+                <h2 class="text-xl font-bold text-green-700 mb-4">🎯 Удары и передачи</h2>
+                <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                    <li><strong>Пас "щечкой":</strong> Основа точной игры. Опорная нога смотрит в сторону цели.</li>
+                    <li><strong>Удар на силу:</strong> Выполняется подъемом (шнуровкой бутс), носок оттянут вниз.</li>
+                    <li><strong>Работа в парах:</strong> Передачи друг другу в касание и с остановкой на 3-5 метрах.</li>
+                </ul>
+            </section>
 
+            <section class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 md:col-span-2">
+                <h2 class="text-xl font-bold text-green-700 mb-4">🗺️ Базовые розыгрыши</h2>
+                <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                    <li><strong>"Стенка":</strong> Быстрый обмен мячом с партнером, чтобы отрезать защитника.</li>
+                    <li><strong>Открывание:</strong> Обучение поиску свободных зон, чтобы не бегать "толпой" за мячом.</li>
+                    <li><strong>Угловые:</strong> Простые подачи на ближнюю штангу или розыгрыш накоротке.</li>
+                </ul>
+            </section>
+
+            <!-- Психология и Обучение (Новые блоки) -->
+            <section class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 border-l-4 border-l-blue-500">
+                <h2 class="text-xl font-bold text-blue-700 mb-4">🧠 Психология юных игроков</h2>
+                <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                    <li><strong>Право на ошибку:</strong> Ребенок не должен бояться ошибаться на поле — это главный инструмент роста.</li>
+                    <li><strong>Позитивная мотивация:</strong> Хвалим за смелые решения и старание, а не только за забитые голы.</li>
+                    <li><strong>Отношение к поражениям:</strong> Учим воспринимать проигрыш спокойно, делая выводы для будущих побед.</li>
+                </ul>
+            </section>
+
+            <section class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 border-l-4 border-l-orange-500">
+                <h2 class="text-xl font-bold text-orange-700 mb-4">📋 Обучение детей футболу</h2>
+                <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                    <li><strong>Игровой метод:</strong> Максимум упражнений в виде веселых эстафет и мини-игр (например, "салочки" с мячом).</li>
+                    <li><strong>Концентрация внимания:</strong> У детей 7-10 лет быстро теряется фокус, поэтому задания нужно менять каждые 10-15 минут.</li>
+                    <li><strong>Индивидуальный темп:</strong> Избегаем сравнения детей между собой, оцениваем прогресс ребенка относительно его прошлых результатов.</li>
+                </ul>
+            </section>
+
+        </div>
     </main>
+
+    <!-- Скрипт для переключения картинок -->
+    <script>
+        // Здесь мы указываем имена файлов, которые ты загрузишь на GitHub
+        const images = ['image1.jpg', 'image2.jpg', 'image3.jpg'];
+        let currentIndex = 0;
+
+        const sliderImage = document.getElementById('sliderImage');
+        const counter = document.getElementById('imageCounter');
+
+        function updateImage() {
+            // Перезапуск анимации плавного появления
+            sliderImage.classList.remove('fade');
+            void sliderImage.offsetWidth; 
+            sliderImage.classList.add('fade');
+            
+            // Смена источника картинки
+            sliderImage.src = images[currentIndex];
+            counter.innerText = currentIndex + 1;
+        }
+
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateImage();
+        }
+
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateImage();
+        }
+    </script>
 </body>
 </html>
